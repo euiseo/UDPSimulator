@@ -1,0 +1,24 @@
+﻿<UserControl x:Class="TcmsSimulator.TabPage.TCMSVirtualStatusServerView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:TcmsSimulator.TabPage"
+             xmlns:bit="clr-namespace:TcmsSimulator.UIModel"
+             mc:Ignorable="d" Width="885" Height="605">
+    <UserControl.DataContext>
+        <bit:StatusGridData/>
+    </UserControl.DataContext>
+    <Grid Margin="0,0,-80,-25">
+        <Button Style="{StaticResource DefaultButtonStyle}" x:Name="StatusTCMSStart" Content="Status&#xA;TCMS Start" HorizontalAlignment="Left" Margin="494,65,0,0" VerticalAlignment="Top" Width="95" Click="StatusTCMSStart_Click" Height="43"/>
+        <Button Style="{StaticResource DefaultButtonStyle}" x:Name="StatusTCMSStop" Content="Status&#xA;TCMS Stop" HorizontalAlignment="Left" Margin="596,65,0,0" VerticalAlignment="Top" Width="95" Height="43" Click="StatusTCMSStop_Click"/>
+
+        <ComboBox Style="{StaticResource ComboBoxBaseStyle}" x:Name="IPListCombo" HorizontalAlignment="Left" Margin="110,69,0,0" VerticalAlignment="Top" Width="120"/>
+        <Label Style="{StaticResource LabelBaseStyle}" Content="IP설정" HorizontalAlignment="Left" Height="43" Margin="30,65,0,0" VerticalAlignment="Top" Width="75" />
+        <Label Style="{StaticResource LabelBaseStyle}" Content="Port" HorizontalAlignment="Left" Height="43" Margin="243,65,0,0" VerticalAlignment="Top" Width="75" />
+        <TextBox Style="{StaticResource TextBoxBaseStyle}" x:Name="StatusPortBox" HorizontalAlignment="Left" Height="23" Margin="325,73,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
+        <TextBox Style="{StaticResource TextBoxBaseStyle}" x:Name="LogBox" HorizontalAlignment="Left" Height="460" Margin="30,145,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="400"/>
+        <DataGrid x:Name="StatusGrid" ItemsSource="{Binding Statuslist, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" HorizontalAlignment="Left" Height="460" Margin="453,145,0,0" VerticalAlignment="Top" Width="502"/>
+
+    </Grid>
+</UserControl>

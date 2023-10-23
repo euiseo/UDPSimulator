@@ -1,0 +1,95 @@
+﻿<UserControl x:Class="TcmsSimulator.TabPage.TCMSVIrtualOperationServerView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:TcmsSimulator.TabPage"
+             xmlns:bit="clr-namespace:TcmsSimulator.UIModel"
+             mc:Ignorable="d" Width="1015" Height="775">
+    <UserControl.DataContext>
+        <bit:StatusGridData/>
+    </UserControl.DataContext>
+    <Grid Margin="0,-1,0,-94">
+        <ComboBox x:Name="IPListCombo" HorizontalAlignment="Left" Margin="121,34,0,0" VerticalAlignment="Top" Width="120"/>
+        <Label Style="{StaticResource LabelBaseStyle}" Content="IP설정" HorizontalAlignment="Left" Height="35" Margin="30,27,0,0" VerticalAlignment="Top" Width="75"/>
+        <Label Style="{StaticResource LabelBaseStyle}" Content="Port" HorizontalAlignment="Left" Height="24" Margin="265,29,0,0" VerticalAlignment="Top" Width="75"/>
+        <TextBox  Style="{StaticResource TextBoxBaseStyle}" x:Name="OperationPortBox" HorizontalAlignment="Left" Height="23" Margin="343,29,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
+
+        <Button Style="{StaticResource DefaultButtonStyle}" x:Name="OperationTCMSStart" Content="Operation&#xA;TCMS Start" HorizontalAlignment="Left" Margin="531,27,0,0" VerticalAlignment="Top" Width="95" Click="OperationTCMSStart_Click" Height="43"/>
+        <Button Style="{StaticResource DefaultButtonStyle}" x:Name="OperationTCMSStop" Content="Operation&#xA;TCMS Stop" HorizontalAlignment="Left" Margin="629,28,0,0" VerticalAlignment="Top" Width="95" Height="43" Click="OperationTCMSStop_Click"/>
+        <Button Style="{StaticResource DefaultButtonStyle}" x:Name="OperationDataChange" Content="Operation&#xA;Data변경" HorizontalAlignment="Left" Margin="531,73,0,0" VerticalAlignment="Top" Width="95" Click="OperationDataChange_Click" Height="43"/>
+        <ComboBox Style="{StaticResource ComboBoxBaseStyle}" x:Name="TrainQuantityCombo" HorizontalAlignment="Left" Margin="629,74,0,0" VerticalAlignment="Top" Width="95" Height="36"/>
+
+        <TextBox Style="{StaticResource TextBoxBaseStyle}" x:Name="LogBox" HorizontalAlignment="Left" Height="425" Margin="10,435,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="480"/>
+        <Calendar x:Name="OperationDateCalendar" HorizontalAlignment="Left" Margin="30,117,0,0" VerticalAlignment="Top" SelectedDatesChanged="OperationDateCalendar_SelectedDatesChanged"/>
+        <DataGrid x:Name="OperationGrid" ItemsSource="{Binding Operationlist, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" HorizontalAlignment="Left" Height="425" Margin="500,435,0,0" VerticalAlignment="Top" Width="505"/>
+
+        <Label Style="{StaticResource LabelBaseStyle}" Content="열차번호" HorizontalAlignment="Left" Height="26" Margin="265,56,0,0" VerticalAlignment="Top" Width="75"/>
+        <TextBox  Style="{StaticResource TextBoxBaseStyle}" x:Name="TrainNoBox" Text="0315" HorizontalAlignment="Left" Height="23" Margin="343,57,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
+        <Label Style="{StaticResource LabelBaseStyle}" Content="편성번호" HorizontalAlignment="Left" Height="26" Margin="265,85,0,0" VerticalAlignment="Top" Width="75"/>
+        <TextBox  Style="{StaticResource TextBoxBaseStyle}" x:Name="TrainOrganBox" Text="05" HorizontalAlignment="Left" Height="23" Margin="343,86,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
+
+        <Slider x:Name="sld" HorizontalAlignment="Left" Maximum="100" IsSnapToTickEnabled="True" Margin="321,145,0,0" VerticalAlignment="Top" Width="117" ValueChanged="sld_ValueChanged" />
+        <Label Style="{StaticResource LabelBaseStyle}" Content="1호차탑승률" HorizontalAlignment="Left" Margin="216,139,0,0" VerticalAlignment="Top"/>
+        <TextBox  Style="{StaticResource TextBoxBaseStyle}" x:Name="rate1" HorizontalAlignment="Left" Height="18" Margin="443,143,0,0" TextWrapping="Wrap" Text="0" VerticalAlignment="Top" Width="50" TextChanged="rate1_TextChanged"/>
+
+        <Label Style="{StaticResource LabelBaseStyle}" Content="2호차탑승률" HorizontalAlignment="Left" Margin="216,170,0,0" VerticalAlignment="Top"/>
+        <Slider x:Name="sld2" HorizontalAlignment="Left" Maximum="100" IsSnapToTickEnabled="True" Margin="321,171,0,0" VerticalAlignment="Top" Width="117" ValueChanged="sld2_ValueChanged" />
+        <TextBox Style="{StaticResource TextBoxBaseStyle}"  x:Name="rate2" HorizontalAlignment="Left" Height="18" Margin="443,173,0,0" TextWrapping="Wrap" Text="0" VerticalAlignment="Top" Width="50" TextChanged="rate2_TextChanged"/>
+
+        <Label Style="{StaticResource LabelBaseStyle}" Content="3호차탑승률" HorizontalAlignment="Left" Margin="216,201,0,0" VerticalAlignment="Top"/>
+        <Slider x:Name="sld3" HorizontalAlignment="Left" Maximum="100" IsSnapToTickEnabled="True" Margin="321,202,0,0" VerticalAlignment="Top" Width="117" ValueChanged="sld3_ValueChanged" />
+        <TextBox Style="{StaticResource TextBoxBaseStyle}"  x:Name="rate3" HorizontalAlignment="Left" Height="18" Margin="443,204,0,0" TextWrapping="Wrap" Text="0" VerticalAlignment="Top" Width="50" TextChanged="rate3_TextChanged"/>
+
+        <Label Style="{StaticResource LabelBaseStyle}" Content="4호차탑승률" HorizontalAlignment="Left" Margin="216,230,0,0" VerticalAlignment="Top"/>
+        <Slider x:Name="sld4" HorizontalAlignment="Left" Maximum="100" IsSnapToTickEnabled="True" Margin="321,231,0,0" VerticalAlignment="Top" Width="117" ValueChanged="sld4_ValueChanged" />
+        <TextBox Style="{StaticResource TextBoxBaseStyle}"  x:Name="rate4" HorizontalAlignment="Left" Height="18" Margin="443,233,0,0" TextWrapping="Wrap" Text="0" VerticalAlignment="Top" Width="50" TextChanged="rate4_TextChanged"/>
+
+        <Label Style="{StaticResource LabelBaseStyle}" Content="5호차탑승률" HorizontalAlignment="Left" Margin="535,138,0,0" VerticalAlignment="Top"/>
+        <Slider x:Name="sld5" HorizontalAlignment="Left" Maximum="100" IsSnapToTickEnabled="True" Margin="640,139,0,0" VerticalAlignment="Top" Width="117" ValueChanged="sld5_ValueChanged" />
+        <TextBox Style="{StaticResource TextBoxBaseStyle}"  x:Name="rate5" HorizontalAlignment="Left" Height="18" Margin="762,141,0,0" TextWrapping="Wrap" Text="0" VerticalAlignment="Top" Width="50" TextChanged="rate5_TextChanged"/>
+
+        <Label Style="{StaticResource LabelBaseStyle}" Content="6호차탑승률" HorizontalAlignment="Left" Margin="534,170,0,0" VerticalAlignment="Top"/>
+        <Slider x:Name="sld6" HorizontalAlignment="Left" Maximum="100" IsSnapToTickEnabled="True" Margin="640,171,0,0" VerticalAlignment="Top" Width="117" ValueChanged="sld6_ValueChanged" />
+        <TextBox  Style="{StaticResource TextBoxBaseStyle}" x:Name="rate6" HorizontalAlignment="Left" Height="18" Margin="762,173,0,0" TextWrapping="Wrap" Text="0" VerticalAlignment="Top" Width="50" TextChanged="rate6_TextChanged"/>
+
+        <Label Style="{StaticResource LabelBaseStyle}" Content="7호차탑승률" HorizontalAlignment="Left" Margin="534,201,0,0" VerticalAlignment="Top" />
+        <Slider x:Name="sld7" HorizontalAlignment="Left" Maximum="100" IsSnapToTickEnabled="True" Margin="640,202,0,0" VerticalAlignment="Top" Width="117" ValueChanged="sld7_ValueChanged" />
+        <TextBox Style="{StaticResource TextBoxBaseStyle}"  x:Name="rate7" HorizontalAlignment="Left" Height="18" Margin="762,204,0,0" TextWrapping="Wrap" Text="0" VerticalAlignment="Top" Width="50" TextChanged="rate7_TextChanged"/>
+
+        <Label Style="{StaticResource LabelBaseStyle}" Content="0호차탑승률" HorizontalAlignment="Left" Margin="534,230,0,0" VerticalAlignment="Top"/>
+        <Slider x:Name="sld0" HorizontalAlignment="Left" Maximum="100" IsSnapToTickEnabled="True" Margin="640,231,0,0" VerticalAlignment="Top" Width="117" ValueChanged="sld0_ValueChanged" />
+        <TextBox Style="{StaticResource TextBoxBaseStyle}"  x:Name="rate0" HorizontalAlignment="Left" Height="18" Margin="762,233,0,0" TextWrapping="Wrap" Text="0" VerticalAlignment="Top" Width="50" TextChanged="rate0_TextChanged"/>
+
+        <Label Style="{StaticResource LabelBaseStyle}" Content="현재역코드" HorizontalAlignment="Left" Height="25" Margin="34,290,0,0" VerticalAlignment="Top" Width="75" />
+        <TextBox  Style="{StaticResource TextBoxBaseStyle}" x:Name="CurrentStationCodeBox" Text="St442" HorizontalAlignment="Left" Height="22" Margin="112,290,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
+        <Label Style="{StaticResource LabelBaseStyle}" Content="다음역코드" HorizontalAlignment="Left" Height="25" Margin="34,315,0,0" VerticalAlignment="Top" Width="75"/>
+        <TextBox  Style="{StaticResource TextBoxBaseStyle}" x:Name="NextStationCodeBox" Text="St443" HorizontalAlignment="Left" Height="22" Margin="112,315,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
+        <Label Style="{StaticResource LabelBaseStyle}" Content="종착역코드" HorizontalAlignment="Left" Height="25" Margin="34,340,0,0" VerticalAlignment="Top" Width="75" />
+        <TextBox  Style="{StaticResource TextBoxBaseStyle}" x:Name="FinalStationCodeBox" Text="St444" HorizontalAlignment="Left" Height="22" Margin="112,340,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
+
+        <Label Style="{StaticResource LabelBaseStyle}" Content="적산주행거리" HorizontalAlignment="Left" Height="25" Margin="248,290,0,0" VerticalAlignment="Top" Width="110" />
+        <TextBox  Style="{StaticResource TextBoxBaseStyle}" x:Name="TotalKMBox" Text="30" HorizontalAlignment="Left" Height="22" Margin="370,291,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
+        <Label Style="{StaticResource LabelBaseStyle}" Content="속도" HorizontalAlignment="Left" Height="25" Margin="248,317,0,0" VerticalAlignment="Top" Width="110"/>
+        <TextBox  Style="{StaticResource TextBoxBaseStyle}" x:Name="SpeedBox" Text="32" HorizontalAlignment="Left" Height="22" Margin="370,320,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
+        <Label Style="{StaticResource LabelBaseStyle}" Content="ATC목표속도" HorizontalAlignment="Left" Height="29" Margin="248,344,0,0" VerticalAlignment="Top" Width="110"/>
+        <TextBox Style="{StaticResource TextBoxBaseStyle}"  x:Name="AtcSpeedBox" Text="3000" HorizontalAlignment="Left" Height="22" Margin="370,348,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
+        <Label Style="{StaticResource LabelBaseStyle}" Content="역간적산거리" HorizontalAlignment="Left" Height="25" Margin="248,375,0,0" VerticalAlignment="Top" Width="110" />
+        <TextBox  Style="{StaticResource TextBoxBaseStyle}" x:Name="TotalStationDistanceBox" Text="3000" HorizontalAlignment="Left" Height="22" Margin="370,377,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
+
+        <Label Style="{StaticResource LabelBaseStyle}" Content="역행" HorizontalAlignment="Left" Margin="534,286,0,0" VerticalAlignment="Top" Width="95"/>
+        <Slider x:Name="BackwardSlider" HorizontalAlignment="Left" Maximum="100" IsSnapToTickEnabled="True" Margin="641,287,0,0" VerticalAlignment="Top" Width="117" ValueChanged="Backward_ValueChanged" />
+        <TextBox Style="{StaticResource TextBoxBaseStyle}"  x:Name="BackwardRateBox" HorizontalAlignment="Left" Height="18" Margin="763,289,0,0" TextWrapping="Wrap" Text="0" VerticalAlignment="Top" Width="50" TextChanged="Backward_TextChanged"/>
+        <Label Style="{StaticResource LabelBaseStyle}" Content="제동" HorizontalAlignment="Left" Margin="534,317,0,0" VerticalAlignment="Top"  Width="95"/>
+        <Slider x:Name="StopSlider" HorizontalAlignment="Left" Maximum="100" IsSnapToTickEnabled="True" Margin="641,321,0,0" VerticalAlignment="Top" Width="117" ValueChanged="StopRate_ValueChanged" />
+        <TextBox Style="{StaticResource TextBoxBaseStyle}"  x:Name="StopRateBox" HorizontalAlignment="Left" Height="18" Margin="763,322,0,0" TextWrapping="Wrap" Text="0" VerticalAlignment="Top" Width="50"  TextChanged="StopRate_TextChanged"/>
+        <Label Style="{StaticResource LabelBaseStyle}" Content="HCR0" HorizontalAlignment="Left" Width="95" Margin="534,348,0,0" VerticalAlignment="Top"/>
+        <Slider x:Name="HCR0Slider" HorizontalAlignment="Left" Maximum="100" IsSnapToTickEnabled="True" Margin="641,354,0,0" VerticalAlignment="Top" Width="117" ValueChanged="HCR0Box_ValueChanged" />
+        <TextBox Style="{StaticResource TextBoxBaseStyle}"  x:Name="HCR0Box" HorizontalAlignment="Left" Height="18" Margin="763,352,0,0" TextWrapping="Wrap" Text="0" VerticalAlignment="Top" Width="50" TextChanged="HCR0Box_TextChanged"/>
+        <Label Style="{StaticResource LabelBaseStyle}" Content="HCR1" HorizontalAlignment="Left" Width="95" Margin="534,377,0,0" VerticalAlignment="Top"/>
+        <Slider x:Name="HCR1Slider" HorizontalAlignment="Left" Maximum="100" IsSnapToTickEnabled="True" Margin="641,381,0,0" VerticalAlignment="Top" Width="117" ValueChanged="HCR1Box_ValueChanged" />
+        <TextBox  Style="{StaticResource TextBoxBaseStyle}" x:Name="HCR1Box" HorizontalAlignment="Left" Height="18" Margin="763,380,0,0" TextWrapping="Wrap" Text="0" VerticalAlignment="Top" Width="50"  TextChanged="HCR1Box_TextChanged"/>
+
+
+    </Grid>
+</UserControl>
